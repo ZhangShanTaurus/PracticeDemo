@@ -1,0 +1,27 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+println "Configure for $project.name" //遍历子Project，project变量对应每个子Project
+
+buildscript {//这也是一个Script Block
+    repositories {//repositories是一个SB
+        ///jcenter是一个函数，表示编译过程中依赖的库，所需的插件可以在jcenter仓库中下载。
+        jcenter()
+    }
+    dependencies {//SB
+        //dependencies表示我们编译的时候，依赖android开发的gradle插件。插件对应的classpath是com.android.tools.build。版本是2.0.0
+        classpath 'com.android.tools.build:gradle:2.0.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

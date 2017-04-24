@@ -1,0 +1,10 @@
+def initMinshengGradleEnvironment() {
+    println "initialize Minsheng Gradle Environment ....."
+    //....干一些special的私活....
+    println "initialize Minsheng Gradle Environment completes..."
+}
+//settings.gradle加载的时候，会执行initMinshengGradleEnvironment
+initMinshengGradleEnvironment()
+
+//通过include函数，将子Project的名字（其文件夹名）包含进来
+include ':mvp-demo', ':event-bus-demo', ':calldemo'
