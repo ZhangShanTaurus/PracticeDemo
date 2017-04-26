@@ -10,10 +10,13 @@ import java.util.Date;
 import java.util.List;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.provider.CallLog;
 import android.support.v4.app.ActivityCompat;
 
@@ -35,12 +38,22 @@ public class CallLogUtils {
      *
      * @return
      */
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static List<CallRecord> callHistoryList(Context context, ContentResolver contentResolver, boolean
             isAllRecord, OnPermissionDeniedListener listener) {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CALL_LOG)
                 != PackageManager.PERMISSION_GRANTED) {//"没有授权"
-            if (listener != null) {
-                listener.onPermissionDenied();
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission
+                    .READ_CALL_LOG)) {//当多次拒绝并选择不提提醒，那么下次再去读取就不会在去申请授权，而是直接在回调中说明用户已拒绝授权
+                if (listener != null) {
+                    listener.givePermissionInfo();
+                }
+            } else { //只被拒绝过一次该权限的申请
+                if (listener != null) {
+                    listener.onPermissionDenied();
+                }
+                ActivityCompat
+                        .requestPermissions((Activity) context, new String[] {Manifest.permission.READ_CALL_LOG}, 0);
             }
             return Collections.emptyList();
         }
@@ -100,6 +113,8 @@ public class CallLogUtils {
     }
 
     public interface OnPermissionDeniedListener {
-        void onPermissionDenied();
+        void onPermissionDenied();//权限拒绝回调
+
+        void givePermissionInfo();//给出申请权限理由
     }
 }
