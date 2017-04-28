@@ -57,7 +57,6 @@ public class CallLogUtils {
             }
             return Collections.emptyList();
         }
-        List<CallRecord> callRecordList = new ArrayList<>();
 
         Cursor cursor = contentResolver.query(CallLog.Calls.CONTENT_URI,//系统方式获取通讯录存储地址
                 new String[] {CallLog.Calls.CACHED_NAME,//名字
@@ -66,22 +65,25 @@ public class CallLogUtils {
                         CallLog.Calls.DATE,//时间
                         CallLog.Calls.DURATION//时长
                 }, null, null, CallLog.Calls.DEFAULT_SORT_ORDER);
-        if (cursor != null && cursor.getCount() > 0) {
-            CallRecord callRecord;
-            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                callRecord = new CallRecord();
-                callRecord.setName(cursor.getString(0));
-                callRecord.setNumber(cursor.getString(1));
-                callRecord.setType(parseType(cursor.getString(2)));
-                callRecord.setDate(parseDate(cursor.getString(3)));
-                callRecord.setDuration(parseDuration(cursor.getString(4)));
-                callRecordList.add(callRecord);
-                if (!isAllRecord) {
-                    break;
-                }
-            }
-            cursor.close();
+        if (cursor == null || cursor.getCount() == 0) {
+            return Collections.emptyList();
         }
+
+        List<CallRecord> callRecordList = new ArrayList<>();
+        CallRecord callRecord;
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+            callRecord = new CallRecord();
+            callRecord.setName(cursor.getString(0));
+            callRecord.setNumber(cursor.getString(1));
+            callRecord.setType(parseType(cursor.getString(2)));
+            callRecord.setDate(parseDate(cursor.getString(3)));
+            callRecord.setDuration(parseDuration(cursor.getString(4)));
+            callRecordList.add(callRecord);
+            if (!isAllRecord) {
+                break;
+            }
+        }
+        cursor.close();
         return callRecordList;
     }
 
@@ -117,12 +119,4 @@ public class CallLogUtils {
 
         void givePermissionInfo();//给出申请权限理由
     }
-
-    //我是在zhangss分支上添加的内容
-
-    //add one
-
-    //add two
-
-    //add three
 }
