@@ -55,6 +55,7 @@ public class CallLogUtils {
                 ActivityCompat
                         .requestPermissions((Activity) context, new String[] {Manifest.permission.READ_CALL_LOG}, 0);
             }
+            //我是branch_dev_1添加的内容
             return Collections.emptyList();
         }
 
