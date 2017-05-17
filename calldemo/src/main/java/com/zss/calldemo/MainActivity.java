@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(mWeakReference.get(), "请给出使用该权限的理由", Toast.LENGTH_SHORT).show();
+                        //测试编码
                     }
                 });
             }
