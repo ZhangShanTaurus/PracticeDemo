@@ -72,11 +72,14 @@ public class MainActivity extends AppCompatActivity {
                 call(phoneNumber.getText().toString());
             }
         });
+//        ObjectAnimator.ofFloat(mInfoText, "scaleY",0f, 4.0f).setDuration(1000).start();
+
     }
 
     private void call(String phoneNumber) {
         if (TextUtils.isEmpty(phoneNumber)) {
             Toast.makeText(this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, NoLayoutActivity.class));
             return;
         }
         Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -115,6 +118,17 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 activity.mInfoText.setText("未授权或无记录");
             }
+            new AsyncTask<Void, Void, Void>() {
+                @Override
+                protected Void doInBackground(Void... params) {
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Void aVoid) {
+                    super.onPostExecute(aVoid);
+                }
+            };
         }
 
         CallLogUtils.OnPermissionDeniedListener listener = new CallLogUtils.OnPermissionDeniedListener() {
@@ -142,4 +156,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Handler handler = new Handler();
+
 }
