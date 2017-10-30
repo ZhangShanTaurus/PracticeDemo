@@ -3,13 +3,16 @@
  */
 package com.zss.calldemo;
 
+import java.io.Serializable;
+
 /**
  * 通话记录实体
  * 作者 zhangss
  * 实现的主要功能。
  * 创建日期 2017/4/24
  */
-public class CallRecord {
+public class CallRecord implements Serializable {
+
     private String name;
     private String number;
     private String type;
@@ -17,6 +20,11 @@ public class CallRecord {
     private String duration;
 
     public CallRecord() {
+    }
+
+    public CallRecord(String name, String number) {
+        this.name = name;
+        this.number = number;
     }
 
     public String getName() {

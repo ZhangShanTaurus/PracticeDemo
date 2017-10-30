@@ -26,6 +26,8 @@
         </activity>
 
         <activity android:name=".NoLayoutActivity"/>
+        <activity android:name=".TestAddViewActivity"/>
+        <activity android:name=".InflateDemo"/>
     </application>
 
 </manifest>

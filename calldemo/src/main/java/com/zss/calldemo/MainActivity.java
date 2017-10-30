@@ -69,17 +69,22 @@ public class MainActivity extends AppCompatActivity {
         callBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                call(phoneNumber.getText().toString());
+//                call(phoneNumber.getText().toString());
+                startActivity(new Intent(MainActivity.this,InflateDemo.class));
             }
         });
-//        ObjectAnimator.ofFloat(mInfoText, "scaleY",0f, 4.0f).setDuration(1000).start();
+        //        ObjectAnimator.ofFloat(mInfoText, "scaleY",0f, 4.0f).setDuration(1000).start();
 
     }
 
     private void call(String phoneNumber) {
         if (TextUtils.isEmpty(phoneNumber)) {
             Toast.makeText(this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, NoLayoutActivity.class));
+            Intent intent = new Intent(this, NoLayoutActivity.class);
+            Bundle bundle = new Bundle();
+//            bundle.putSerializable(NoLayoutActivity.KEY_DATA, new CallRecord("张山", "123"));
+            intent.putExtras(bundle);
+            startActivity(intent);
             return;
         }
         Intent intent = new Intent(Intent.ACTION_DIAL);

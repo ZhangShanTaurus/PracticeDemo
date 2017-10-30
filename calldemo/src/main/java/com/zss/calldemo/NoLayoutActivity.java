@@ -6,10 +6,11 @@ package com.zss.calldemo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -21,10 +22,42 @@ import android.widget.Toast;
  */
 public class NoLayoutActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = NoLayoutActivity.class.getSimpleName();
+
+    public static final String KEY_DATA = "key_data";
+
+    private CallRecord callRecord;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getRootView());
+        initData(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState()");
+        outState.putSerializable(KEY_DATA, callRecord);
+    }
+
+    void initData(Bundle bundle) {
+        if (bundle == null) {
+            if (getIntent() != null) {
+                callRecord = (CallRecord) getIntent().getSerializableExtra(KEY_DATA);
+                Log.d(TAG, "getIntent()");
+            }
+        } else {
+            callRecord = (CallRecord) bundle.getSerializable(KEY_DATA);
+            Log.d(TAG, "bundle ()");
+        }
+
+        if (callRecord != null) {
+            Log.d(TAG, callRecord.toString());
+        } else {
+            Log.d(TAG, "callRecord is null");
+        }
     }
 
     private static final int BUTTON_ID = R.id.btn_id;
@@ -36,12 +69,13 @@ public class NoLayoutActivity extends AppCompatActivity implements View.OnClickL
         FrameLayout.LayoutParams rootLayoutParams =
                 new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
         root.setLayoutParams(rootLayoutParams);
-        Button button = new Button(this);
-        button.setId(BUTTON_ID);
-        button.setLayoutParams(new LinearLayout.LayoutParams(200, 120));
-        button.setText("Hello");
-        button.setOnClickListener(this);
-        root.addView(button);
+        ImageView img = new ImageView(this);
+        img.setId(BUTTON_ID);
+        img.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+        img.setOnClickListener(this);
+        img.setImageDrawable(getResources().getDrawable(R.drawable.ic_3d_rotation_black_24dp));
+        root.addView(img);
         return root;
     }
 
