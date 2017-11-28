@@ -12,6 +12,8 @@
             <option value="$PROJECT_DIR$/event-bus-demo" />
             <option value="$PROJECT_DIR$/loglibrary" />
             <option value="$PROJECT_DIR$/mvp-demo" />
+            <option value="$PROJECT_DIR$/scroll-demo" />
+            <option value="$PROJECT_DIR$/socket_client" />
           </set>
         </option>
         <option name="myModules">
@@ -21,6 +23,8 @@
             <option value="$PROJECT_DIR$/event-bus-demo" />
             <option value="$PROJECT_DIR$/loglibrary" />
             <option value="$PROJECT_DIR$/mvp-demo" />
+            <option value="$PROJECT_DIR$/scroll-demo" />
+            <option value="$PROJECT_DIR$/socket_client" />
           </set>
         </option>
       </GradleProjectSettings>

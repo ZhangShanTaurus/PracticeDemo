@@ -7,4 +7,4 @@ def initMinshengGradleEnvironment() {
 initMinshengGradleEnvironment()
 
 //通过include函数，将子Project的名字（其文件夹名）包含进来
-include ':mvp-demo', ':event-bus-demo', ':calldemo', ':loglibrary'
+include ':mvp-demo', ':event-bus-demo', ':calldemo', ':loglibrary', ':scroll-demo', ':socket_client'

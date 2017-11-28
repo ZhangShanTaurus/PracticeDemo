@@ -7,6 +7,8 @@
       <module fileurl="file://$PROJECT_DIR$/event-bus-demo/event-bus-demo.iml" filepath="$PROJECT_DIR$/event-bus-demo/event-bus-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/loglibrary/loglibrary.iml" filepath="$PROJECT_DIR$/loglibrary/loglibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvp-demo/mvp-demo.iml" filepath="$PROJECT_DIR$/mvp-demo/mvp-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scroll-demo/scroll-demo.iml" filepath="$PROJECT_DIR$/scroll-demo/scroll-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socket_client/socket_client.iml" filepath="$PROJECT_DIR$/socket_client/socket_client.iml" />
     </modules>
   </component>
 </project>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2017 Facishare Technology Co., Ltd. All Rights Reserved.
+  -->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.zss.scroll.MainActivity"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/top_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#00ff00">
+
+        <Button
+                android:id="@+id/button_hide"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="Hide"
+                android:layout_marginBottom="10dp"/>
+
+        <Button
+                android:id="@+id/button_visible"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="Visible"/>
+    </LinearLayout>
+
+
+    <ListView
+            android:id="@+id/list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:overScrollMode="never"
+            android:background="#0099ff"/>
+</LinearLayout>
