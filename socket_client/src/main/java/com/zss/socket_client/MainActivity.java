@@ -13,7 +13,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private static final int SOCKET_PORT = 19890;
@@ -26,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String s = BuildConfig.Name;
-        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         setContentView(R.layout.activity_main);
         textView = (TextView) findViewById(R.id.text);
         initSocket();
